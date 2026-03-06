@@ -30,7 +30,7 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="relative py-32 bg-black overflow-hidden">
+    <section id="contact" className="relative py-32 bg-background overflow-hidden">
       {/* Gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[200px] pointer-events-none" />
 
@@ -49,7 +49,7 @@ export default function Contact() {
             Get In Touch
           </span>
           <h2
-            className="text-[2.5rem] sm:text-[3rem] text-white mb-6"
+            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-6"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
           >
             Let&apos;s Build Something{" "}
@@ -58,7 +58,7 @@ export default function Contact() {
             </span>
           </h2>
           <p
-            className="text-white/40 text-[1rem] max-w-xl mx-auto"
+            className="text-foreground/40 text-[1rem] max-w-xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.8 }}
           >
             I&apos;m always open to discussing new projects, creative ideas, or
@@ -78,19 +78,19 @@ export default function Contact() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
               whileHover={{ y: -6 }}
-              className="group flex flex-col items-center p-8 rounded-2xl border border-white/5 hover:border-emerald-500/30 bg-white/[0.02] transition-all duration-500"
+              className="group flex flex-col items-center p-8 rounded-2xl border border-foreground/5 hover:border-emerald-500/30 bg-foreground/[0.02] transition-all duration-500"
             >
               <div className="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 group-hover:bg-emerald-500/20 transition-colors duration-300">
                 {link.icon}
               </div>
               <h3
-                className="text-white text-[0.95rem] mb-1"
+                className="text-foreground text-[0.95rem] mb-1"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
               >
                 {link.label}
               </h3>
               <p
-                className="text-white/40 text-[0.8rem] flex items-center gap-1"
+                className="text-foreground/40 text-[0.8rem] flex items-center gap-1"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link.value}

@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
     >
       <ParticleField />
 
@@ -36,7 +36,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[3rem] sm:text-[4rem] md:text-[5.5rem] text-white mb-4 tracking-tight"
+          className="text-[3rem] sm:text-[4rem] md:text-[5.5rem] text-foreground mb-4 tracking-tight"
           style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.1 }}
         >
           Sooraj{" "}
@@ -50,7 +50,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-[1.125rem] sm:text-[1.25rem] text-white/60 mb-8 max-w-2xl mx-auto"
+          className="text-[1.125rem] sm:text-[1.25rem] text-foreground/60 mb-8 max-w-2xl mx-auto"
           style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
         >
           AI & Web Development Enthusiast | DSA & CP Grinder |{" "}
@@ -83,7 +83,7 @@ export default function Hero() {
             href="https://github.com/neurobyte-x"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3.5 border border-white/20 text-white rounded-full text-[0.9rem] tracking-wide flex items-center gap-2 hover:border-emerald-400/50 transition-all duration-300"
+            className="px-8 py-3.5 border border-foreground/20 text-foreground rounded-full text-[0.9rem] tracking-wide flex items-center gap-2 hover:border-emerald-400/50 transition-all duration-300"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
           >
             <Github size={18} />
@@ -111,7 +111,7 @@ export default function Hero() {
                 {stat.value}
               </div>
               <div
-                className="text-[0.75rem] text-white/40 uppercase tracking-wider mt-1"
+                className="text-[0.75rem] text-foreground/40 uppercase tracking-wider mt-1"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {stat.label}
@@ -126,7 +126,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 8, 0] }}
         transition={{ opacity: { delay: 2 }, y: { repeat: Infinity, duration: 2, ease: "easeInOut" } }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-foreground/30"
       >
         <ArrowDown size={24} />
       </motion.div>

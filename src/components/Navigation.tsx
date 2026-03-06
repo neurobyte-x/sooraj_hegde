@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -17,6 +17,55 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isDark, setIsDark] = useState<boolean | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  const toggleTheme = () => {
+    if (isDark === null) return;
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
+    
+    const html = document.documentElement;
+    const body = document.body;
+    
+    // Clear any inline styles so CSS variables can take over
+    body.style.removeProperty("background-color");
+    body.style.removeProperty("color");
+    
+    if (newIsDark) {
+      html.classList.add("dark");
+      html.classList.remove("light");
+    } else {
+      html.classList.remove("dark");
+      html.classList.add("light");
+    }
+    localStorage.setItem("theme", newIsDark ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    setMounted(true);
+    // Get initial theme
+    const savedTheme = localStorage.getItem("theme");
+    // Default to dark if no saved preference (ignore system preference)
+    const isInitiallyDark = savedTheme ? savedTheme === "dark" : true;
+    
+    setIsDark(isInitiallyDark);
+    
+    const html = document.documentElement;
+    const body = document.body;
+    
+    // Clear any inline styles set by the SSR script so CSS variables take over
+    body.style.removeProperty("background-color");
+    body.style.removeProperty("color");
+    
+    if (isInitiallyDark) {
+      html.classList.add("dark");
+      html.classList.remove("light");
+    } else {
+      html.classList.remove("dark");
+      html.classList.add("light");
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +92,8 @@ export default function Navigation() {
     setMobileOpen(false);
   };
 
+  if (!mounted) return null;
+
   return (
     <>
       <motion.nav
@@ -51,7 +102,7 @@ export default function Navigation() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/5"
+            ? "dark:bg-black/80 dark:border-b dark:border-white/5 light:bg-white/80 light:border-b light:border-black/5 backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
@@ -60,10 +111,10 @@ export default function Navigation() {
             onClick={() => scrollTo("#home")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-[1.5rem] tracking-tighter"
+            className="text-[1.5rem] tracking-tighter dark:text-white light:text-black"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
           >
-            <span className="text-white">Sooraj</span>
+            <span>Sooraj</span>
             <span className="text-emerald-400">.</span>
           </motion.button>
 
@@ -73,11 +124,11 @@ export default function Navigation() {
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className="relative py-1 text-[0.875rem] tracking-wide uppercase transition-colors duration-300"
+                className="relative py-1 text-[0.875rem] tracking-wide uppercase transition-colors duration-300 dark:text-gray-400 light:text-gray-600"
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 500,
-                  color: activeSection === link.href.slice(1) ? "#10b981" : "#888",
+                  color: activeSection === link.href.slice(1) ? "#10b981" : undefined,
                 }}
               >
                 {link.label}
@@ -92,13 +143,26 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Theme Toggle & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <motion.button
+              onClick={toggleTheme}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-lg border dark:border-white/10 light:border-black/10 dark:text-white/60 light:text-black/60 dark:hover:text-emerald-400 light:hover:text-emerald-400 transition-all duration-300"
+              title="Toggle theme"
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </motion.button>
+
+            {/* Mobile Toggle */}
+            <button
+              className="md:hidden dark:text-white light:text-black"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -110,7 +174,7 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-40 dark:bg-black/95 light:bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link, i) => (
               <motion.button
@@ -119,12 +183,21 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 onClick={() => scrollTo(link.href)}
-                className="text-[1.5rem] tracking-wide uppercase text-white/80 hover:text-emerald-400 transition-colors"
+                className="text-[1.5rem] tracking-wide uppercase dark:text-white/80 light:text-black/80 hover:text-emerald-400 transition-colors"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
               >
                 {link.label}
               </motion.button>
             ))}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.1 }}
+              onClick={toggleTheme}
+              className="mt-4 p-3 rounded-lg border dark:border-white/10 light:border-black/10 dark:text-white light:text-black dark:hover:text-emerald-400 light:hover:text-emerald-400 transition-all duration-300"
+            >
+              {isDark ? <Sun size={24} /> : <Moon size={24} />}
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

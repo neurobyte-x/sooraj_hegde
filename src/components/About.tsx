@@ -27,7 +27,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative py-32 bg-black overflow-hidden">
+    <section id="about" className="relative py-32 bg-background overflow-hidden">
       {/* Subtle grid bg */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -53,7 +53,7 @@ export default function About() {
             About Me
           </span>
           <h2
-            className="text-[2.5rem] sm:text-[3rem] text-white"
+            className="text-[2.5rem] sm:text-[3rem] text-foreground"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
           >
             Crafting the Future with{" "}
@@ -71,7 +71,7 @@ export default function About() {
           className="max-w-3xl mx-auto mb-20"
         >
           <p
-            className="text-white/50 text-[1.05rem] text-center"
+            className="text-foreground/50 text-[1.05rem] text-center"
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.8 }}
           >
             I&apos;m an engineering student passionate about building intelligent systems
@@ -93,19 +93,19 @@ export default function About() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
               whileHover={{ y: -8 }}
-              className="group p-6 rounded-2xl border border-white/5 hover:border-emerald-500/30 bg-white/[0.02] backdrop-blur-sm transition-all duration-500"
+              className="group p-6 rounded-2xl border border-foreground/5 hover:border-emerald-500/30 bg-foreground/[0.02] backdrop-blur-sm transition-all duration-500"
             >
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 group-hover:bg-emerald-500/20 transition-colors duration-300">
                 {item.icon}
               </div>
               <h3
-                className="text-white text-[1rem] mb-2"
+                className="text-foreground text-[1rem] mb-2"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
               >
                 {item.title}
               </h3>
               <p
-                className="text-white/40 text-[0.875rem]"
+                className="text-foreground/40 text-[0.875rem]"
                 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.6 }}
               >
                 {item.desc}

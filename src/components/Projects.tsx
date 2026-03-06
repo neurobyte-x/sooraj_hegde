@@ -214,7 +214,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
       initial={{ opacity: 0, y: 40, scale: 0.96 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, type: "spring", stiffness: 120 }}
-      className="group relative rounded-2xl border border-white/5 hover:border-white/10 bg-white/[0.015] overflow-hidden transition-all duration-500"
+      className="group relative rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.015] overflow-hidden transition-all duration-500"
     >
       {/* Top accent line */}
       <motion.div
@@ -246,7 +246,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
             </motion.div>
             <div>
               <h3
-                className="text-white text-[1.15rem]"
+                className="text-foreground text-[1.15rem]"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
               >
                 {project.title}
@@ -290,7 +290,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-lg border border-white/8 text-white/30 hover:text-white hover:border-white/20 transition-all duration-300"
+              className="p-2 rounded-lg border border-foreground/8 text-foreground/30 hover:text-foreground hover:border-foreground/20 transition-all duration-300"
             >
               <Github size={15} />
             </motion.a>
@@ -299,7 +299,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
 
         {/* Tagline */}
         <p
-          className="text-white/25 text-[0.8rem] italic mb-4"
+          className="text-foreground/25 text-[0.8rem] italic mb-4"
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}
         >
           "{project.tagline}"
@@ -313,7 +313,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.1 + mi * 0.06 + 0.3 }}
-              className="text-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.04]"
+              className="text-center p-2 rounded-lg bg-foreground/[0.03] border border-foreground/[0.04]"
             >
               <div
                 className="text-[0.85rem]"
@@ -322,7 +322,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                 {m.value}
               </div>
               <div
-                className="text-white/20 text-[0.55rem] uppercase tracking-wider mt-0.5"
+                className="text-foreground/20 text-[0.55rem] uppercase tracking-wider mt-0.5"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {m.label}
@@ -333,7 +333,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
 
         {/* Problem → Solution compact */}
         <div className="space-y-2 mb-4">
-          <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+          <div className="p-3 rounded-xl bg-foreground/[0.02] border border-foreground/[0.04]">
             <div className="flex items-center gap-1.5 mb-1.5">
               <motion.div
                 animate={{ scale: [1, 1.4, 1] }}
@@ -344,11 +344,11 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                 Problem
               </span>
             </div>
-            <p className="text-white/35 text-[0.75rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
+            <p className="text-foreground/35 text-[0.75rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
               {project.problemStatement}
             </p>
           </div>
-          <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+          <div className="p-3 rounded-xl bg-foreground/[0.02] border border-foreground/[0.04]">
             <div className="flex items-center gap-1.5 mb-1.5">
               <motion.div
                 animate={{ scale: [1, 1.4, 1] }}
@@ -360,7 +360,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                 Solution
               </span>
             </div>
-            <p className="text-white/35 text-[0.75rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
+            <p className="text-foreground/35 text-[0.75rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
               {project.solution}
             </p>
           </div>
@@ -371,7 +371,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
           <motion.button
             onClick={() => setShowFeatures(!showFeatures)}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 w-full py-2.5 px-3 rounded-lg bg-white/[0.02] border border-white/[0.04] hover:border-white/10 transition-all duration-300 cursor-pointer group/btn"
+            className="flex items-center gap-2 w-full py-2.5 px-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.04] hover:border-foreground/10 transition-all duration-300 cursor-pointer group/btn"
           >
             <motion.div
               animate={{ rotate: showFeatures ? 180 : 0 }}
@@ -381,7 +381,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
             >
               <ChevronDown size={13} />
             </motion.div>
-            <span className="text-[0.75rem] uppercase tracking-wider text-white/50 group-hover/btn:text-white/70 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+            <span className="text-[0.75rem] uppercase tracking-wider text-foreground/50 group-hover/btn:text-foreground/70 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
               Key Features
             </span>
             <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full ml-auto" style={{ backgroundColor: `${project.color}12`, color: project.color, fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
@@ -405,16 +405,16 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: fi * 0.05 }}
-                      className="flex gap-2.5 p-3 rounded-lg bg-white/[0.02] border border-white/[0.03] hover:border-white/8 transition-all duration-300"
+                      className="flex gap-2.5 p-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.03] hover:border-foreground/8 transition-all duration-300"
                     >
                       <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: `${project.color}10`, color: project.color }}>
                         {f.icon}
                       </div>
                       <div className="min-w-0">
-                        <h4 className="text-white/80 text-[0.75rem] mb-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                        <h4 className="text-foreground/80 text-[0.75rem] mb-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
                           {f.title}
                         </h4>
-                        <p className="text-white/25 text-[0.68rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}>
+                        <p className="text-foreground/25 text-[0.68rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}>
                           {f.desc}
                         </p>
                       </div>
@@ -431,7 +431,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
           <motion.button
             onClick={() => setShowStack(!showStack)}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 w-full py-2.5 px-3 rounded-lg bg-white/[0.02] border border-white/[0.04] hover:border-white/10 transition-all duration-300 cursor-pointer group/btn"
+            className="flex items-center gap-2 w-full py-2.5 px-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.04] hover:border-foreground/10 transition-all duration-300 cursor-pointer group/btn"
           >
             <motion.div
               animate={{ rotate: showStack ? 180 : 0 }}
@@ -441,7 +441,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
             >
               <ChevronDown size={13} />
             </motion.div>
-            <span className="text-[0.75rem] uppercase tracking-wider text-white/50 group-hover/btn:text-white/70 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+            <span className="text-[0.75rem] uppercase tracking-wider text-foreground/50 group-hover/btn:text-foreground/70 transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
               Tech Stack
             </span>
             <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full ml-auto" style={{ backgroundColor: `${project.color}12`, color: project.color, fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
@@ -465,7 +465,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: ci * 0.06 }}
-                      className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.03]"
+                      className="p-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.03]"
                     >
                       <h4 className="text-[0.6rem] uppercase tracking-wider mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, color: project.color }}>
                         {cat.category}
@@ -474,7 +474,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                         {cat.items.map((item) => (
                           <div key={item} className="flex items-center gap-1.5">
                             <ChevronRight size={8} style={{ color: project.color }} />
-                            <span className="text-white/40 text-[0.68rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                            <span className="text-foreground/40 text-[0.68rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
                               {item}
                             </span>
                           </div>
@@ -503,7 +503,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="relative py-28 bg-black overflow-hidden">
+    <section id="projects" className="relative py-28 bg-background overflow-hidden">
       <motion.div
         animate={{ x: [0, 40, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -533,7 +533,7 @@ export default function Projects() {
             Featured Work
           </motion.span>
           <h2
-            className="text-[2.5rem] sm:text-[3rem] text-white mb-3"
+            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-3"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
           >
             Projects That{" "}
@@ -542,7 +542,7 @@ export default function Projects() {
             </span>
           </h2>
           <p
-            className="text-white/25 text-[0.9rem] max-w-xl mx-auto"
+            className="text-foreground/25 text-[0.9rem] max-w-xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}
           >
             Real problems identified and solved — from AI coaching systems to intelligent automation.
@@ -565,7 +565,7 @@ export default function Projects() {
               <span className="text-emerald-400 text-[0.95rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
                 {s.val}
               </span>
-              <span className="text-white/20 text-[0.7rem] uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <span className="text-foreground/20 text-[0.7rem] uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>
                 {s.label}
               </span>
             </div>

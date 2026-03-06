@@ -113,7 +113,7 @@ function StatCard({ stat, index, isInView }: { stat: (typeof stats)[0]; index: n
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, type: "spring", stiffness: 120 }}
       whileHover={{ y: -8, scale: 1.03 }}
-      className="group relative p-5 rounded-2xl border border-white/5 hover:border-white/10 bg-white/[0.02] overflow-hidden transition-all duration-500"
+      className="group relative p-5 rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.02] overflow-hidden transition-all duration-500"
     >
       <motion.div
         initial={{ scaleX: 0 }}
@@ -145,10 +145,10 @@ function StatCard({ stat, index, isInView }: { stat: (typeof stats)[0]; index: n
               {stat.suffix}
             </span>
           </div>
-          <p className="text-white/60 text-[0.8rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+          <p className="text-foreground/60 text-[0.8rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
             {stat.label}
           </p>
-          <p className="text-white/25 text-[0.7rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <p className="text-foreground/25 text-[0.7rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
             {stat.desc}
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function CompetitiveProgramming() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="cp" className="relative py-28 bg-black overflow-hidden">
+    <section id="cp" className="relative py-28 bg-background overflow-hidden">
       {/* Moving ambient glows */}
       <motion.div
         animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
@@ -196,7 +196,7 @@ export default function CompetitiveProgramming() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[2.5rem] sm:text-[3rem] text-white mb-4"
+            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-4"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
           >
             Problem Solving{" "}
@@ -208,7 +208,7 @@ export default function CompetitiveProgramming() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-white/30 text-[1rem] max-w-2xl mx-auto"
+            className="text-foreground/30 text-[1rem] max-w-2xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.7 }}
           >
             Over 400 problems solved and counting. From basic data structures to advanced algorithms —
@@ -252,10 +252,10 @@ export default function CompetitiveProgramming() {
           className="mb-14"
         >
           <div className="text-center mb-10">
-            <h3 className="text-white text-[1.25rem] mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+            <h3 className="text-foreground text-[1.25rem] mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
               Platform Ratings & Profiles
             </h3>
-            <p className="text-white/25 text-[0.8rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <p className="text-foreground/25 text-[0.8rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
               Competing and grinding across all major platforms
             </p>
           </div>
@@ -271,7 +271,7 @@ export default function CompetitiveProgramming() {
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.7 + i * 0.12, type: "spring", stiffness: 120 }}
                 whileHover={{ y: -8, scale: 1.03 }}
-                className="group relative p-6 rounded-2xl border border-white/5 hover:border-white/15 bg-white/[0.02] transition-all duration-500 overflow-hidden"
+                className="group relative p-6 rounded-2xl border border-foreground/5 hover:border-foreground/15 bg-foreground/[0.02] transition-all duration-500 overflow-hidden"
               >
                 {/* Hover glow */}
                 <motion.div
@@ -299,7 +299,7 @@ export default function CompetitiveProgramming() {
                     {profile.icon}
                   </motion.div>
 
-                  <h4 className="text-white text-[1.05rem] text-center mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                  <h4 className="text-foreground text-[1.05rem] text-center mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
                     {profile.platform}
                   </h4>
 
@@ -322,13 +322,13 @@ export default function CompetitiveProgramming() {
                     </span>
                   </div>
 
-                  <p className="text-white/25 text-[0.75rem] text-center mb-4" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
+                  <p className="text-foreground/25 text-[0.75rem] text-center mb-4" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
                     {profile.description}
                   </p>
 
                   <motion.div
                     whileHover={{ x: 3 }}
-                    className="flex items-center justify-center gap-1 text-white/20 group-hover:text-white/50 transition-colors"
+                    className="flex items-center justify-center gap-1 text-foreground/20 group-hover:text-foreground/50 transition-colors"
                   >
                     <span className="text-[0.7rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}>
                       Visit Profile
@@ -364,10 +364,10 @@ export default function CompetitiveProgramming() {
               <Trophy size={36} className="text-emerald-400" />
             </motion.div>
             <div className="text-center lg:text-left flex-1">
-              <h3 className="text-white text-[1.25rem] mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
+              <h3 className="text-foreground text-[1.25rem] mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
                 Next Goals
               </h3>
-              <p className="text-white/40 text-[0.9rem] mb-4" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.7 }}>
+              <p className="text-foreground/40 text-[0.9rem] mb-4" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.7 }}>
                 Pushing past the <span className="text-emerald-400">500+ problems</span> milestone while targeting{" "}
                 <span className="text-emerald-400">Specialist on Codeforces</span> and{" "}
                 <span className="text-purple-400">3★ on CodeChef</span>. Simultaneously mastering advanced DP, Graph algorithms, and Segment Trees.

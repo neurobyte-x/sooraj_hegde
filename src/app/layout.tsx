@@ -23,7 +23,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || 'dark';
+                  const isDark = theme === 'dark';
+                  const html = document.documentElement;
+                  if (isDark) {
+                    html.classList.add('dark');
+                    html.classList.remove('light');
+                  } else {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                  }
+                } catch (e) {}
+              })()
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
         {children}
       </body>

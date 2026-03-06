@@ -106,7 +106,7 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 120 }}
       whileHover={{ y: -4 }}
-      className="group relative p-5 rounded-2xl border border-white/5 hover:border-white/10 bg-white/[0.02] transition-all duration-500 overflow-hidden"
+      className="group relative p-5 rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.02] transition-all duration-500 overflow-hidden"
     >
       {/* Top glow */}
       <motion.div
@@ -135,7 +135,7 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
           {group.icon}
         </motion.div>
         <h3
-          className="text-white text-[0.95rem]"
+          className="text-foreground text-[0.95rem]"
           style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
         >
           {group.title}
@@ -143,7 +143,7 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
       </div>
 
       <p
-        className="text-white/20 text-[0.7rem] mb-4 ml-12"
+        className="text-foreground/20 text-[0.7rem] mb-4 ml-12"
         style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}
       >
         {group.description}
@@ -159,13 +159,13 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
             transition={{ duration: 0.4, delay: index * 0.1 + si * 0.06 + 0.3 }}
             onMouseEnter={() => setHoveredSkill(si)}
             onMouseLeave={() => setHoveredSkill(null)}
-            className="relative flex items-start gap-2.5 py-2 px-3 -mx-1 rounded-lg hover:bg-white/[0.03] transition-all duration-300 cursor-default"
+            className="relative flex items-start gap-2.5 py-2 px-3 -mx-1 rounded-lg hover:bg-foreground/[0.03] transition-all duration-300 cursor-default"
           >
             <motion.div
               animate={hoveredSkill === si ? { scale: 1.3 } : { scale: 1 }}
               transition={{ duration: 0.2 }}
               className="w-1.5 h-1.5 rounded-full mt-[7px] flex-shrink-0"
-              style={{ backgroundColor: hoveredSkill === si ? group.color : "rgba(255,255,255,0.15)" }}
+              style={{ backgroundColor: hoveredSkill === si ? group.color : "rgba(128,128,128,0.25)" }}
             />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
@@ -174,7 +174,8 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
                   style={{
                     fontFamily: "'Space Grotesk', sans-serif",
                     fontWeight: 600,
-                    color: hoveredSkill === si ? group.color : "rgba(255,255,255,0.7)",
+                    color: hoveredSkill === si ? group.color : "var(--foreground)",
+                    opacity: hoveredSkill === si ? 1 : 0.7,
                   }}
                 >
                   {skill.name}
@@ -187,7 +188,7 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
                 className="overflow-hidden"
               >
                 <p
-                  className="text-white/30 text-[0.7rem] pt-0.5"
+                  className="text-foreground/30 text-[0.7rem] pt-0.5"
                   style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}
                 >
                   {skill.note}
@@ -206,7 +207,7 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="relative py-24 bg-black overflow-hidden">
+    <section id="skills" className="relative py-24 bg-background overflow-hidden">
       <motion.div
         animate={{ x: [0, 30, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -231,7 +232,7 @@ export default function Skills() {
             Technical Arsenal
           </motion.span>
           <h2
-            className="text-[2.5rem] sm:text-[3rem] text-white mb-3"
+            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-3"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
           >
             Skills &{" "}
@@ -240,7 +241,7 @@ export default function Skills() {
             </span>
           </h2>
           <p
-            className="text-white/25 text-[0.9rem] max-w-xl mx-auto"
+            className="text-foreground/25 text-[0.9rem] max-w-xl mx-auto"
             style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}
           >
             Hover any skill to see context — what I use it for and how deep I go.
@@ -271,7 +272,7 @@ export default function Skills() {
               <motion.div
                 key={`${tech}-${i}`}
                 whileHover={{ scale: 1.08, borderColor: "rgba(16,185,129,0.4)" }}
-                className="flex-shrink-0 px-4 py-2 rounded-full border border-white/8 text-white/40 text-[0.75rem] hover:text-emerald-400 transition-all duration-300 cursor-default"
+                className="flex-shrink-0 px-4 py-2 rounded-full border border-foreground/8 text-foreground/40 text-[0.75rem] hover:text-emerald-400 transition-all duration-300 cursor-default"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
               >
                 {tech}
