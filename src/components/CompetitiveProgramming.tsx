@@ -35,7 +35,7 @@ function useCounter(end: number, duration: number, start: boolean) {
 
 const stats = [
   { icon: <Code2 size={26} />, value: 500, suffix: "+", label: "DSA Problems", desc: "Solved across platforms", color: "#10b981" },
-  { icon: <Star size={26} />, value: 2, suffix: "★", label: "CodeChef Rating", desc: "Competitive Programming", color: "#f59e0b" },
+  { icon: <Star size={26} />, value: 3, suffix: "★", label: "CodeChef Rating", desc: "Competitive Programming", color: "#f59e0b" },
   { icon: <Swords size={26} />, value: 50, suffix: "+", label: "Contests", desc: "Participated in", color: "#a855f7" },
   { icon: <Flame size={26} />, value: 100, suffix: "+", label: "Day Streak", desc: "Consistent practice", color: "#ef4444" },
   { icon: <Target size={26} />, value: 10, suffix: "+", label: "Topic Mastery", desc: "Core DSA topics covered", color: "#ec4899" },

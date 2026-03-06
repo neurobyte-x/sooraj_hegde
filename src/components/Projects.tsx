@@ -32,6 +32,7 @@ interface Project {
   color: string;
   icon: string;
   repo: string;
+  visit?: string;
 }
 
 const projects: Project[] = [
@@ -67,6 +68,7 @@ const projects: Project[] = [
     color: "#10b981",
     icon: "🧠",
     repo: "https://github.com/neurobyte-x/CP-GPT",
+    visit: "https://cp-gpt.onrender.com/",
   },
   {
     id: "neuros",
@@ -133,6 +135,7 @@ const projects: Project[] = [
     color: "#f59e0b",
     icon: "🔧",
     repo: "https://github.com/neurobyte-x/AI-Maintainance-Reporter",
+    visit: "https://ai-maintainance-reporter.onrender.com/",
   },
   {
     id: "neuroagent",
@@ -256,16 +259,42 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
               </p>
             </div>
           </div>
-          <motion.a
-            href={project.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="p-2 rounded-lg border border-white/8 text-white/30 hover:text-white hover:border-white/20 transition-all duration-300"
-          >
-            <Github size={15} />
-          </motion.a>
+          <div className="flex items-center gap-2">
+            {project.visit && (
+              <motion.a
+                href={project.visit}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-3 py-1.5 rounded-lg border text-[0.65rem] uppercase tracking-wider font-semibold transition-all duration-300"
+                style={{
+                  borderColor: `${project.color}40`,
+                  color: project.color,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = `${project.color}15`;
+                  e.currentTarget.style.borderColor = `${project.color}80`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.borderColor = `${project.color}40`;
+                }}
+              >
+                Visit
+              </motion.a>
+            )}
+            <motion.a
+              href={project.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-2 rounded-lg border border-white/8 text-white/30 hover:text-white hover:border-white/20 transition-all duration-300"
+            >
+              <Github size={15} />
+            </motion.a>
+          </div>
         </div>
 
         {/* Tagline */}
