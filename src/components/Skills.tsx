@@ -58,6 +58,8 @@ const skillGroups: SkillGroup[] = [
       { name: "PostgreSQL", note: "Neon DB, SQLAlchemy 2.0, Alembic" },
       { name: "Redis", note: "Caching, session store, rate limiting" },
       { name: "Docker", note: "Multi-container apps, compose workflows" },
+      { name: "FastAPI Cloud", note: "One Click CLI Deploy" },
+      { name: "Render/Railway/Streamlit", note: "Cloud Deployement" },
     ],
   },
   {
@@ -67,11 +69,11 @@ const skillGroups: SkillGroup[] = [
     color: "#ec4899",
     description: "Building intelligent systems with modern AI frameworks",
     skills: [
-      { name: "Google Gemini", note: "2.5 Flash/Pro, Vision, function calling" },
       { name: "LangChain", note: "Agent chains, tool integration, memory" },
       { name: "LangGraph", note: "Multi-agent workflows, state machines" },
       { name: "Composio", note: "Tool integration platform for AI agents" },
-      { name: "scikit-learn", note: "Classification, similarity, vectorization" },
+      { name: "LangSmith", note: "Classification, similarity, vectorization" },
+      { name: "Crew AI", note: "2.5 Flash/Pro, Vision, function calling" },
     ],
   },
   {

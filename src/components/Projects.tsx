@@ -71,39 +71,6 @@ const projects: Project[] = [
     visit: "https://cp-gpt.onrender.com/",
   },
   {
-    id: "neuros",
-    title: "NeurOS 2.0",
-    subtitle: "Metacognitive Learning System",
-    tagline: "A personal knowledge OS that thinks about how you think",
-    problemStatement:
-      "Traditional tools focus on content storage, not understanding. Students forget 70% within 24 hours without active review.",
-    solution:
-      "Implements SuperMemo-2 for optimal review scheduling, visualizes memory decay in real-time, and forces deep processing through mandatory structured reflection.",
-    features: [
-      { title: "SuperMemo-2 SRS", desc: "Quality-based ratings that dynamically adjust review intervals", icon: <Cpu size={16} /> },
-      { title: "Ebbinghaus Tracking", desc: "Real-time forgetting curves with critical retention alerts", icon: <Eye size={16} /> },
-      { title: "Knowledge Graph", desc: "D3.js force-directed graph with mastery-based node sizing", icon: <Globe size={16} /> },
-      { title: "Flash Coding", desc: "Monaco Editor for timed practice with hidden solutions", icon: <Terminal size={16} /> },
-      { title: "Daily Standup", desc: "AI briefing prioritizing urgent reviews and decaying items", icon: <Sparkles size={16} /> },
-      { title: "Reflection Engine", desc: "5-field structured reflection mandatory for every entry", icon: <Braces size={16} /> },
-    ],
-    techStack: [
-      { category: "Backend", items: ["FastAPI", "PostgreSQL", "SQLAlchemy 2.0", "Celery", "Redis"] },
-      { category: "Frontend", items: ["React 18", "TypeScript", "D3.js", "Monaco Editor", "Tailwind"] },
-      { category: "Algorithms", items: ["SuperMemo-2", "Ebbinghaus Curves", "Force-Directed Graphs"] },
-      { category: "Auth/Infra", items: ["JWT", "Pydantic v2", "Async SQLAlchemy"] },
-    ],
-    metrics: [
-      { label: "SRS", value: "SM-2" },
-      { label: "Viz", value: "D3.js" },
-      { label: "Editor", value: "Monaco" },
-      { label: "Fields", value: "5" },
-    ],
-    color: "#a855f7",
-    icon: "🔬",
-    repo: "https://github.com/neurobyte-x/NeurOS",
-  },
-  {
     id: "aimaintenance",
     title: "AI Maintenance Reporter",
     subtitle: "Intelligent Ticket System",
@@ -136,6 +103,39 @@ const projects: Project[] = [
     icon: "🔧",
     repo: "https://github.com/neurobyte-x/AI-Maintainance-Reporter",
     visit: "https://ai-maintainance-reporter.onrender.com/",
+  },
+  {
+    id: "neuros",
+    title: "NeurOS 2.0",
+    subtitle: "Metacognitive Learning System",
+    tagline: "A personal knowledge OS that thinks about how you think",
+    problemStatement:
+      "Traditional tools focus on content storage, not understanding. Students forget 70% within 24 hours without active review.",
+    solution:
+      "Implements SuperMemo-2 for optimal review scheduling, visualizes memory decay in real-time, and forces deep processing through mandatory structured reflection.",
+    features: [
+      { title: "SuperMemo-2 SRS", desc: "Quality-based ratings that dynamically adjust review intervals", icon: <Cpu size={16} /> },
+      { title: "Ebbinghaus Tracking", desc: "Real-time forgetting curves with critical retention alerts", icon: <Eye size={16} /> },
+      { title: "Knowledge Graph", desc: "D3.js force-directed graph with mastery-based node sizing", icon: <Globe size={16} /> },
+      { title: "Flash Coding", desc: "Monaco Editor for timed practice with hidden solutions", icon: <Terminal size={16} /> },
+      { title: "Daily Standup", desc: "AI briefing prioritizing urgent reviews and decaying items", icon: <Sparkles size={16} /> },
+      { title: "Reflection Engine", desc: "5-field structured reflection mandatory for every entry", icon: <Braces size={16} /> },
+    ],
+    techStack: [
+      { category: "Backend", items: ["FastAPI", "PostgreSQL", "SQLAlchemy 2.0", "Celery", "Redis"] },
+      { category: "Frontend", items: ["React 18", "TypeScript", "D3.js", "Monaco Editor", "Tailwind"] },
+      { category: "Algorithms", items: ["SuperMemo-2", "Ebbinghaus Curves", "Force-Directed Graphs"] },
+      { category: "Auth/Infra", items: ["JWT", "Pydantic v2", "Async SQLAlchemy"] },
+    ],
+    metrics: [
+      { label: "SRS", value: "SM-2" },
+      { label: "Viz", value: "D3.js" },
+      { label: "Editor", value: "Monaco" },
+      { label: "Fields", value: "5" },
+    ],
+    color: "#a855f7",
+    icon: "🔬",
+    repo: "https://github.com/neurobyte-x/NeurOS",
   },
   {
     id: "neuroagent",
