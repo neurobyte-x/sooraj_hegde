@@ -14,7 +14,7 @@ export default function Footer() {
               className="text-[1.25rem] text-foreground tracking-tighter"
               style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
             >
-              Sooraj<span className="text-emerald-400">Hegde</span>
+              Sooraj<span className="text-emerald-400"></span>
             </span>
             <span
               className="text-foreground/20 text-[0.8rem]"

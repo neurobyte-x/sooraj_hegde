@@ -115,7 +115,7 @@ export default function Navigation() {
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
           >
             <span>Sooraj</span>
-            <span className="text-emerald-400">Hegde</span>
+            <span className="text-emerald-400"></span>
           </motion.button>
 
           {/* Desktop Nav */}
