@@ -78,7 +78,7 @@ export default function About() {
             that bridge the gap between AI and real-world applications. With a strong
             foundation in Data Structures & Algorithms and competitive programming,
             I specialize in creating full-stack web applications with Next.js , React.js ,FastAPI powered by cutting-edge
-            AI technologies like Gemini, LangChain, and LangGraph. My projects
+            AI technologies like LangChain, and LangGraph. My projects
             range from AI-powered competitive programming coaches to metacognitive
             learning systems.
           </p>
