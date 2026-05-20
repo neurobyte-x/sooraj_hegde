@@ -95,7 +95,7 @@ const skillGroups: SkillGroup[] = [
 const marqueeItems = [
   "React", "Python", "TypeScript", "FastAPI", "Docker",
   "PostgreSQL", "Redis", "Git", "Vite", "Tailwind CSS",
-  "LangChain", "Java" "Next.js", "Composio",
+  "LangChain", "Java", "Next.js", "Composio",
   "C++", "Zustand", "SQLAlchemy", "JWT", "n8n", "Playwright",
 ];
 
