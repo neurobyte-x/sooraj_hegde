@@ -41,6 +41,7 @@ export default function Hero() {
         >
           Sooraj{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
+            Hegde
           </span>
         </motion.h1>
 
