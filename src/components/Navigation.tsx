@@ -114,8 +114,8 @@ export default function Navigation() {
             className="text-[1.5rem] tracking-tighter dark:text-white light:text-black"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
           >
-            <span>Sooraj</span>
-            <span className="text-emerald-400"></span>
+            {/* <span>Sooraj</span>
+            <span className="text-emerald-400"></span> */}
           </motion.button>
 
           {/* Desktop Nav */}

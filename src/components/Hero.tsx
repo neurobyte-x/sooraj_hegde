@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { ParticleField } from "./ParticleField";
 import { ArrowDown, Github } from "lucide-react";
 
@@ -57,6 +58,54 @@ export default function Hero() {
           <span className="text-emerald-400">400+ Problems Solved</span> |{" "}
           CodeChef ★★
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.95 }}
+          className="mb-10 flex justify-center"
+        >
+          <div className="inline-flex max-w-full items-center gap-4 rounded-2xl border border-foreground/10 bg-foreground/4 px-5 py-3 text-left backdrop-blur-sm">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-[#0b2344] shadow-[0_0_20px_rgba(14,165,233,0.18)]">
+              <Image
+                src="/healthedge_logo.jpg"
+                alt="HealthEdge logo"
+                width={40}
+                height={40}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
+            <div className="flex flex-col items-center gap-1 text-center">
+              <span
+                className="text-[0.76rem] uppercase tracking-[0.22em] text-foreground/50"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
+              >
+                Current Position
+              </span>
+              <span
+                className="text-[1rem] sm:text-[1.05rem] text-foreground/90"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
+              >
+                SDE Intern
+              </span>
+              <div className="flex items-center justify-center gap-2 text-[0.92rem] text-foreground/70">
+                <span
+                  className="text-foreground/50"
+                  style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
+                >
+                  Company : 
+                </span>
+                <span
+                  className="font-semibold text-foreground/90"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  HealthEdge
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* CTA buttons */}
         <motion.div

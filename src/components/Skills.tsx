@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
-import { Code2, Globe, Server, BrainCircuit, Wrench } from "lucide-react";
+import { Braces, Monitor, Server, BrainCircuit, Wrench } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -22,7 +22,7 @@ const skillGroups: SkillGroup[] = [
   {
     id: "languages",
     title: "Languages",
-    icon: <Code2 size={20} />,
+    icon: <Braces size={20} />,
     color: "#10b981",
     description: "Core programming languages I write production code in daily",
     skills: [
@@ -36,7 +36,7 @@ const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     title: "Frontend",
-    icon: <Globe size={20} />,
+    icon: <Monitor size={20} />,
     color: "#a855f7",
     description: "Building responsive, interactive user interfaces",
     skills: [

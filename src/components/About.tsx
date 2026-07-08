@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import { GraduationCap, Target, Sparkles } from "lucide-react";
+import { GraduationCap, Compass, Crosshair } from "lucide-react";
 
 const highlights = [
   {
@@ -11,12 +11,12 @@ const highlights = [
     desc: "B.Tech in CSE-IT @ REVA University",
   },
   {
-    icon: <Target size={24} />,
+    icon: <Compass size={24} />,
     title: "Goal",
     desc: "Full-Stack + AI Engineer",
   },
   {
-    icon: <Sparkles size={24} />,
+    icon: <Crosshair size={24} />,
     title: "Focus",
     desc: "AI, Web Dev, DSA & CP",
   },
@@ -85,7 +85,7 @@ export default function About() {
         </motion.div>
 
         {/* Highlight cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}
@@ -93,9 +93,9 @@ export default function About() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
               whileHover={{ y: -8 }}
-              className="group p-6 rounded-2xl border border-foreground/5 hover:border-emerald-500/30 bg-foreground/[0.02] backdrop-blur-sm transition-all duration-500"
+              className="group p-6 rounded-2xl border border-foreground/5 hover:border-emerald-500/30 bg-foreground/[0.02] backdrop-blur-sm transition-all duration-500 text-center w-full max-w-sm"
             >
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 group-hover:bg-emerald-500/20 transition-colors duration-300">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 mx-auto group-hover:bg-emerald-500/20 transition-colors duration-300">
                 {item.icon}
               </div>
               <h3

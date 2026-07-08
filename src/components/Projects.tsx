@@ -30,7 +30,6 @@ interface Project {
   techStack: { category: string; items: string[] }[];
   metrics: { label: string; value: string }[];
   color: string;
-  icon: string;
   repo: string;
   visit?: string;
 }
@@ -66,7 +65,6 @@ const projects: Project[] = [
       { label: "Modes", value: "3" },
     ],
     color: "#10b981",
-    icon: "🧠",
     repo: "https://github.com/neurobyte-x/CP-GPT",
     visit: "https://cp-gpt.onrender.com/",
   },
@@ -100,7 +98,6 @@ const projects: Project[] = [
       { label: "Speed", value: "Real-time" },
     ],
     color: "#f59e0b",
-    icon: "🔧",
     repo: "https://github.com/neurobyte-x/AI-Maintainance-Reporter",
     visit: "https://ai-maintainance-reporter.onrender.com/",
   },
@@ -134,7 +131,6 @@ const projects: Project[] = [
       { label: "Fields", value: "5" },
     ],
     color: "#a855f7",
-    icon: "🔬",
     repo: "https://github.com/neurobyte-x/NeurOS",
   },
   {
@@ -167,7 +163,6 @@ const projects: Project[] = [
       { label: "Memory", value: "Threads" },
     ],
     color: "#ec4899",
-    icon: "🤖",
     repo: "https://github.com/neurobyte-x/NeuroAgent",
   },
   {
@@ -200,7 +195,6 @@ const projects: Project[] = [
       { label: "UI", value: "CLI+Web" },
     ],
     color: "#ef4444",
-    icon: "🎬",
     repo: "https://github.com/neurobyte-x/Movie-Recommendation-System",
   },
 ];
@@ -234,30 +228,19 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
       <div className="relative p-6">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <motion.div
-              initial={{ scale: 0, rotate: -90 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 + 0.2, type: "spring", stiffness: 250 }}
-              className="w-11 h-11 rounded-xl flex items-center justify-center text-[1.4rem] flex-shrink-0"
-              style={{ backgroundColor: `${project.color}15` }}
+          <div>
+            <h3
+              className="text-foreground text-[1.15rem]"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
             >
-              {project.icon}
-            </motion.div>
-            <div>
-              <h3
-                className="text-foreground text-[1.15rem]"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
-              >
-                {project.title}
-              </h3>
-              <p
-                className="text-[0.7rem] tracking-wider uppercase"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, color: project.color }}
-              >
-                {project.subtitle}
-              </p>
-            </div>
+              {project.title}
+            </h3>
+            <p
+              className="text-[0.7rem] tracking-wider uppercase"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, color: project.color }}
+            >
+              {project.subtitle}
+            </p>
           </div>
           <div className="flex items-center gap-2">
             {project.visit && (
@@ -299,8 +282,8 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
 
         {/* Tagline */}
         <p
-          className="text-foreground/25 text-[0.8rem] italic mb-4"
-          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}
+          className="text-foreground/50 text-[0.88rem] mb-4"
+          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.65 }}
         >
           "{project.tagline}"
         </p>
@@ -313,17 +296,17 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.1 + mi * 0.06 + 0.3 }}
-              className="text-center p-2 rounded-lg bg-foreground/[0.03] border border-foreground/[0.04]"
+              className="text-center p-2 rounded-lg bg-foreground/3 border border-foreground/4"
             >
               <div
-                className="text-[0.85rem]"
+                className="text-[0.9rem]"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: project.color, lineHeight: 1 }}
               >
                 {m.value}
               </div>
               <div
-                className="text-foreground/20 text-[0.55rem] uppercase tracking-wider mt-0.5"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="text-foreground/45 text-[0.6rem] uppercase tracking-wider mt-0.5"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
               >
                 {m.label}
               </div>
@@ -344,7 +327,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                 Problem
               </span>
             </div>
-            <p className="text-foreground/35 text-[0.75rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
+            <p className="text-foreground/60 text-[0.8rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}>
               {project.problemStatement}
             </p>
           </div>
@@ -360,7 +343,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                 Solution
               </span>
             </div>
-            <p className="text-foreground/35 text-[0.75rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>
+            <p className="text-foreground/60 text-[0.8rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}>
               {project.solution}
             </p>
           </div>
@@ -405,16 +388,16 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: fi * 0.05 }}
-                      className="flex gap-2.5 p-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.03] hover:border-foreground/8 transition-all duration-300"
+                      className="flex gap-2.5 p-3 rounded-lg bg-foreground/2 border border-foreground/3 hover:border-foreground/8 transition-all duration-300"
                     >
-                      <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: `${project.color}10`, color: project.color }}>
+                      <div className="w-7 h-7 rounded-md flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: `${project.color}10`, color: project.color }}>
                         {f.icon}
                       </div>
                       <div className="min-w-0">
-                        <h4 className="text-foreground/80 text-[0.75rem] mb-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                        <h4 className="text-foreground/90 text-[0.8rem] mb-0.5" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
                           {f.title}
                         </h4>
-                        <p className="text-foreground/25 text-[0.68rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}>
+                        <p className="text-foreground/55 text-[0.74rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.55 }}>
                           {f.desc}
                         </p>
                       </div>
@@ -465,7 +448,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: ci * 0.06 }}
-                      className="p-3 rounded-lg bg-foreground/[0.02] border border-foreground/[0.03]"
+                      className="p-3 rounded-lg bg-foreground/2 border border-foreground/3"
                     >
                       <h4 className="text-[0.6rem] uppercase tracking-wider mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, color: project.color }}>
                         {cat.category}
@@ -474,7 +457,7 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
                         {cat.items.map((item) => (
                           <div key={item} className="flex items-center gap-1.5">
                             <ChevronRight size={8} style={{ color: project.color }} />
-                            <span className="text-foreground/40 text-[0.68rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                            <span className="text-foreground/60 text-[0.72rem]" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}>
                               {item}
                             </span>
                           </div>
@@ -542,10 +525,10 @@ export default function Projects() {
             </span>
           </h2>
           <p
-            className="text-foreground/25 text-[0.9rem] max-w-xl mx-auto"
-            style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}
+            className="text-foreground/45 text-[0.95rem] max-w-2xl mx-auto"
+            style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.75 }}
           >
-            Real problems identified and solved — from AI coaching systems to intelligent automation.
+            A focused set of projects built around AI systems, automation, and full-stack execution.
           </p>
         </motion.div>
 
@@ -565,7 +548,7 @@ export default function Projects() {
               <span className="text-emerald-400 text-[0.95rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
                 {s.val}
               </span>
-              <span className="text-foreground/20 text-[0.7rem] uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <span className="text-foreground/45 text-[0.72rem] uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
                 {s.label}
               </span>
             </div>
