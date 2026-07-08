@@ -30,36 +30,34 @@ const skillGroups: SkillGroup[] = [
       { name: "C++", note: "Competitive programming & DSA" },
       { name: "JavaScript", note: "Full-stack web development" },
       { name: "TypeScript", note: "Type-safe React & Node projects" },
-      { name: "SQL", note: "Complex queries, joins, migrations" },
+      { name: "Java", note: "Enterprise Backend Systems" },
     ],
   },
   {
-    id: "frontend",
-    title: "Frontend",
+    id: "web-development",
+    title: "Web Development",
     icon: <Monitor size={20} />,
     color: "#a855f7",
-    description: "Building responsive, interactive user interfaces",
+    description: "Core web development stack",
     skills: [
-      { name: "React 18", note: "Hooks, context, state management" },
-      { name: "Next.js", note: "SSR, API routes, app router" },
-      { name: "Tailwind CSS", note: "Utility-first styling, responsive design" },
-      { name: "Zustand", note: "Lightweight global state management" },
-      { name: "Vite", note: "Build tooling & dev server" },
+      { name: "React", note: "Component-driven UI development" },
+      { name: "Next.js", note: "Full-stack React framework" },
+      { name: "FastAPI", note: "Python backend APIs" },
+      { name: "Spring Boot", note: "Java backend services" },
     ],
   },
   {
     id: "backend",
-    title: "Backend & Infra",
+    title: "Deployment & Infrastructure",
     icon: <Server size={20} />,
     color: "#f59e0b",
-    description: "Server-side systems, databases, and deployment",
+    description: "Hosting and deployment tooling",
     skills: [
-      { name: "FastAPI", note: "Async APIs, middleware, dependency injection" },
-      { name: "PostgreSQL", note: "Neon DB, SQLAlchemy 2.0, Alembic" },
-      { name: "Redis", note: "Caching, session store, rate limiting" },
-      { name: "Docker", note: "Multi-container apps, compose workflows" },
-      { name: "FastAPI Cloud", note: "One Click CLI Deploy" },
-      { name: "Render/Railway/Streamlit", note: "Cloud Deployement" },
+      { name: "Docker", note: "Containerized development and deployment" },
+      { name: "FastAPI Cloud", note: "FastAPI deployment workflow" },
+      { name: "Render", note: "Production hosting platform" },
+      { name: "Railway", note: "App and database deployment" },
+      { name: "Streamlit", note: "Rapid app hosting and demos" },
     ],
   },
   {
@@ -93,10 +91,9 @@ const skillGroups: SkillGroup[] = [
 ];
 
 const marqueeItems = [
-  "React", "Python", "TypeScript", "FastAPI", "Docker",
-  "PostgreSQL", "Redis", "Git", "Vite", "Tailwind CSS",
-  "LangChain", "Java", "Next.js", "Composio",
-  "C++", "Zustand", "SQLAlchemy", "JWT", "n8n", "Playwright",
+  "React", "Next.js", "FastAPI", "Spring Boot", "Docker",
+  "FastAPI Cloud", "Render", "Railway", "Streamlit",
+  "Python", "Java", "TypeScript", "C++",
 ];
 
 function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: number; isInView: boolean }) {
