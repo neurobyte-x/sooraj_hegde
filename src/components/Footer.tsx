@@ -10,10 +10,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <div className="flex items-center gap-4">
-            <span
-              className="text-[1.25rem] text-foreground tracking-tighter"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
-            >
+            <span className="text-[1.25rem] text-foreground tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
               Sooraj<span className="text-emerald-400"></span>
             </span>
             <span

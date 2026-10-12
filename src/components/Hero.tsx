@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { ParticleField } from "./ParticleField";
 import { ArrowDown, Github } from "lucide-react";
 
 export default function Hero() {
@@ -11,10 +10,9 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
     >
-      <ParticleField />
-
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(16,185,129,0.08)_0%,_transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(45,212,191,0.12)_0%,_transparent_60%)]" />
+      <div className="absolute -top-24 left-[-8rem] h-[28rem] w-[28rem] rounded-full bg-emerald-400/10 blur-[110px]" />
+      <div className="absolute bottom-[-10rem] right-[-6rem] h-[24rem] w-[24rem] rounded-full bg-amber-400/10 blur-[120px]" />
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {/* Greeting */}
@@ -24,10 +22,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mb-6"
         >
-          <span
-            className="inline-block px-4 py-2 border border-emerald-500/30 rounded-full text-emerald-400 text-[0.875rem] tracking-widest uppercase"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
+          <span className="inline-block px-4 py-2 border border-emerald-500/30 rounded-full text-emerald-300 text-[0.875rem] tracking-widest uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Welcome to my portfolio
           </span>
         </motion.div>
@@ -41,7 +36,7 @@ export default function Hero() {
           style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.1 }}
         >
           Sooraj{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-200">
             Hegde
           </span>
         </motion.h1>
@@ -120,7 +115,7 @@ export default function Hero() {
             onClick={() =>
               document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
             }
-            className="px-8 py-3.5 bg-emerald-500 text-black rounded-full text-[0.9rem] tracking-wide cursor-pointer transition-all duration-300"
+            className="px-8 py-3.5 bg-emerald-400 text-black rounded-full text-[0.9rem] tracking-wide cursor-pointer transition-all duration-300"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
           >
             View My Work
@@ -132,7 +127,7 @@ export default function Hero() {
             href="https://github.com/neurobyte-x"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3.5 border border-foreground/20 text-foreground rounded-full text-[0.9rem] tracking-wide flex items-center gap-2 hover:border-emerald-400/50 transition-all duration-300"
+            className="px-8 py-3.5 border border-foreground/20 text-foreground rounded-full text-[0.9rem] tracking-wide flex items-center gap-2 hover:border-emerald-300/50 transition-all duration-300"
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
           >
             <Github size={18} />
@@ -154,7 +149,7 @@ export default function Hero() {
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div
-                className="text-[1.75rem] text-emerald-400"
+                className="text-[1.75rem] text-emerald-300"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}
               >
                 {stat.value}

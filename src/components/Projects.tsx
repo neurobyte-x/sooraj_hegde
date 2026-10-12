@@ -202,13 +202,14 @@ const projects: Project[] = [
 function CompactProject({ project, index, isInView }: { project: Project; index: number; isInView: boolean }) {
   const [showFeatures, setShowFeatures] = useState(false);
   const [showStack, setShowStack] = useState(false);
+  const isFeatured = project.id === "cpgpt";
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, scale: 0.96 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, type: "spring", stiffness: 120 }}
-      className="group relative rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.015] overflow-hidden transition-all duration-500"
+      className={`group relative rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.015] overflow-hidden transition-all duration-500 ${isFeatured ? "lg:col-span-2" : ""}`}
     >
       {/* Top accent line */}
       <motion.div
@@ -225,9 +226,9 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
         style={{ backgroundColor: project.color }}
       />
 
-      <div className="relative p-6">
+      <div className={`relative ${isFeatured ? "p-7 lg:p-8" : "p-6"}`}>
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-4">
           <div>
             <h3
               className="text-foreground text-[1.15rem]"
@@ -288,9 +289,54 @@ function CompactProject({ project, index, isInView }: { project: Project; index:
           "{project.tagline}"
         </p>
 
+        {isFeatured && (
+          <div className="mb-4 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="rounded-2xl border border-foreground/6 bg-black/30 p-4">
+              <div className="mb-3 flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/45" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                Featured build
+              </div>
+              <div className="space-y-2">
+                <div className="h-3 w-5/6 rounded-full bg-foreground/8" />
+                <div className="h-3 w-2/3 rounded-full bg-foreground/8" />
+                <div className="h-3 w-4/5 rounded-full bg-foreground/8" />
+                <div className="mt-4 grid grid-cols-3 gap-2">
+                  {['Agent', 'Paths', 'Hints'].map((chip) => (
+                    <div key={chip} className="rounded-xl border border-foreground/6 bg-foreground/[0.03] px-3 py-2 text-center text-[0.68rem] uppercase tracking-[0.2em] text-foreground/45" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                      {chip}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-foreground/6 bg-foreground/[0.02] p-4">
+              <div className="grid grid-cols-2 gap-2">
+                {project.metrics.slice(0, 2).map((m, mi) => (
+                  <motion.div
+                    key={m.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.4, delay: index * 0.1 + mi * 0.06 + 0.3 }}
+                    className="rounded-2xl border border-foreground/6 bg-black/20 p-3 text-center"
+                  >
+                    <div className="text-[1.05rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: project.color, lineHeight: 1 }}>
+                      {m.value}
+                    </div>
+                    <div className="mt-1 text-[0.62rem] uppercase tracking-[0.22em] text-foreground/40" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                      {m.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <p className="mt-3 text-[0.75rem] text-foreground/35" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.55 }}>
+                The flagship build gets a larger surface and more breathing room than the rest of the grid.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Metrics row */}
-        <div className="grid grid-cols-4 gap-2 mb-4">
-          {project.metrics.map((m, mi) => (
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          {project.metrics.slice(0, 2).map((m, mi) => (
             <motion.div
               key={m.label}
               initial={{ opacity: 0, scale: 0.8 }}
@@ -486,7 +532,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="relative py-28 bg-background overflow-hidden">
+    <section id="projects" className="relative py-24 lg:py-28 bg-background overflow-hidden">
       <motion.div
         animate={{ x: [0, 40, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -499,53 +545,27 @@ export default function Projects() {
       />
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-6"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-emerald-400 text-[0.8rem] uppercase tracking-[0.3em] block mb-4"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
-          >
-            Featured Work
-          </motion.span>
-          <h2
-            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-3"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
-          >
-            Projects That{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
-              Define Me
-            </span>
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} className="mb-6 max-w-3xl">
+          <span className="inline-flex rounded-full border border-foreground/8 bg-foreground/[0.03] px-3 py-1 text-[0.68rem] uppercase tracking-[0.25em] text-foreground/50" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+            Featured work
+          </span>
+          <h2 className="mt-4 text-[2.5rem] sm:text-[3rem] text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.08 }}>
+            Projects that feel shipped, not generated.
           </h2>
-          <p
-            className="text-foreground/45 text-[0.95rem] max-w-2xl mx-auto"
-            style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.75 }}
-          >
-            A focused set of projects built around AI systems, automation, and full-stack execution.
+          <p className="mt-4 max-w-2xl text-[0.95rem] text-foreground/45" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.75 }}>
+            A focused set of builds around AI systems, automation, and full-stack execution.
           </p>
         </motion.div>
 
         {/* Summary stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center justify-center gap-6 mb-14"
-        >
+        <motion.div initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : {}} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-wrap items-center gap-4 mb-12">
           {[
             { label: "Full-Stack", val: "5" },
             { label: "AI-Powered", val: "4" },
             { label: "Open Source", val: "100%" },
           ].map((s) => (
-            <div key={s.label} className="flex items-center gap-2">
-              <span className="text-emerald-400 text-[0.95rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
+            <div key={s.label} className="rounded-full border border-foreground/8 bg-foreground/[0.02] px-4 py-2 flex items-center gap-2">
+              <span className="text-emerald-300 text-[0.95rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
                 {s.val}
               </span>
               <span className="text-foreground/45 text-[0.72rem] uppercase tracking-wider" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
@@ -558,10 +578,7 @@ export default function Projects() {
         {/* Project Rows — 2 per row */}
         <div className="space-y-6">
           {rows.map((row, ri) => (
-            <div
-              key={ri}
-              className={`grid gap-6 ${row.length === 2 ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1 lg:grid-cols-2"}`}
-            >
+            <div key={ri} className="grid gap-6 grid-cols-1 lg:grid-cols-2">
               {row.map((project, pi) => (
                 <CompactProject
                   key={project.id}

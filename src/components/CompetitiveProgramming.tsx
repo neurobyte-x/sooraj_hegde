@@ -108,50 +108,28 @@ const profiles = [
 function StatCard({ stat, index, isInView }: { stat: (typeof stats)[0]; index: number; isInView: boolean }) {
   const count = useCounter(stat.value, 2000, isInView);
   return (
-    <motion.div
+     <motion.div
       initial={{ opacity: 0, y: 40, scale: 0.9 }}
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, type: "spring", stiffness: 120 }}
       whileHover={{ y: -8, scale: 1.03 }}
-      className="group relative p-5 rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.02] overflow-hidden transition-all duration-500"
+      className="group relative rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/2 overflow-hidden transition-all duration-500 p-5"
     >
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={isInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-        className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 origin-left"
-        style={{ background: `linear-gradient(90deg, transparent, ${stat.color}, transparent)` }}
-      />
-      <div
-        className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-[40px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
-        style={{ backgroundColor: stat.color }}
-      />
-      <div className="flex items-center gap-4 relative">
-        <motion.div
-          initial={{ scale: 0, rotate: -90 }}
-          animate={isInView ? { scale: 1, rotate: 0 } : {}}
-          transition={{ duration: 0.6, delay: index * 0.1 + 0.2, type: "spring", stiffness: 200 }}
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ backgroundColor: `${stat.color}15`, color: stat.color }}
-        >
-          {stat.icon}
-        </motion.div>
-        <div>
-          <div className="flex items-baseline gap-1">
-            <span className="text-[2rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: stat.color, lineHeight: 1 }}>
-              {count}
-            </span>
-            <span className="text-[1.25rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: stat.color }}>
-              {stat.suffix}
-            </span>
-          </div>
-          <p className="text-foreground/60 text-[0.8rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
-            {stat.label}
-          </p>
-          <p className="text-foreground/25 text-[0.7rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
-            {stat.desc}
-          </p>
+      <div className="relative">
+        <div className="flex items-baseline gap-1">
+          <span className="text-[2.35rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: stat.color, lineHeight: 1 }}>
+            {count}
+          </span>
+          <span className="text-[1.25rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: stat.color }}>
+            {stat.suffix}
+          </span>
         </div>
+        <p className="mt-2 text-foreground/70 text-[0.8rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+          {stat.label}
+        </p>
+        <p className="mt-1 text-foreground/30 text-[0.72rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+          {stat.desc}
+        </p>
       </div>
     </motion.div>
   );
@@ -162,67 +140,34 @@ export default function CompetitiveProgramming() {
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="cp" className="relative py-28 bg-background overflow-hidden">
+    <section id="cp" className="relative py-24 lg:py-26 bg-background overflow-hidden">
       {/* Moving ambient glows */}
       <motion.div
         animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-emerald-500/[0.03] rounded-full blur-[180px] pointer-events-none"
+          className="absolute top-0 left-1/4 w-150 h-150 bg-emerald-500/3 rounded-full blur-[180px] pointer-events-none"
       />
       <motion.div
         animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/[0.03] rounded-full blur-[150px] pointer-events-none"
+          className="absolute bottom-0 right-1/4 w-125 h-125 bg-purple-500/3 rounded-full blur-[150px] pointer-events-none"
       />
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-8"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-emerald-400 text-[0.8rem] uppercase tracking-[0.3em] block mb-4"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
-          >
-            Competitive Programming
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-4"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
-          >
-            Problem Solving{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
-              Journey
-            </span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-foreground/30 text-[1rem] max-w-2xl mx-auto"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.7 }}
-          >
-            Over 400 problems solved and counting. From basic data structures to advanced algorithms —
-            consistently grinding, competing, and improving every single day.
-          </motion.p>
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} className="mb-8 max-w-3xl">
+          <span className="inline-flex rounded-full border border-foreground/8 bg-foreground/3 px-3 py-1 text-[0.68rem] uppercase tracking-[0.25em] text-foreground/50" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+              Competitive programming
+          </span>
+          <h2 className="mt-4 text-[2.45rem] sm:text-[3rem] text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.1 }}>
+            Problem solving, but with more structure.
+          </h2>
+          <p className="mt-4 max-w-2xl text-[0.98rem] text-foreground/40" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.75 }}>
+            Over 400 problems solved and counting. From basic data structures to advanced algorithms, the goal is steady improvement and better practice habits.
+          </p>
         </motion.div>
 
         {/* Quick highlight badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center justify-center gap-3 mb-14"
-        >
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.3 }} className="flex items-center justify-start gap-3 mb-12">
           <motion.div
             animate={{ boxShadow: ["0 0 0px rgba(16,185,129,0)", "0 0 20px rgba(16,185,129,0.15)", "0 0 0px rgba(16,185,129,0)"] }}
             transition={{ duration: 3, repeat: Infinity }}
@@ -231,14 +176,14 @@ export default function CompetitiveProgramming() {
             <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}>
               <Flame size={16} className="text-emerald-400" />
             </motion.div>
-            <span className="text-emerald-400 text-[0.8rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+              <span className="text-emerald-300 text-[0.8rem]" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
               Currently focusing on DP, Trees & Graphs
             </span>
           </motion.div>
         </motion.div>
 
         {/* ========== STATS GRID ========== */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {stats.map((stat, i) => (
             <StatCard key={stat.label} stat={stat} index={i} isInView={isInView} />
           ))}
@@ -249,13 +194,13 @@ export default function CompetitiveProgramming() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-14"
+          className="mb-12"
         >
-          <div className="text-center mb-10">
-            <h3 className="text-foreground text-[1.25rem] mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+          <div className="mb-8">
+            <h3 className="text-foreground text-[1.12rem] mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
               Platform Ratings & Profiles
             </h3>
-            <p className="text-foreground/25 text-[0.8rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <p className="text-foreground/30 text-[0.8rem]" style={{ fontFamily: "'Inter', sans-serif" }}>
               Competing and grinding across all major platforms
             </p>
           </div>
@@ -271,14 +216,14 @@ export default function CompetitiveProgramming() {
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.7 + i * 0.12, type: "spring", stiffness: 120 }}
                 whileHover={{ y: -8, scale: 1.03 }}
-                className="group relative p-6 rounded-2xl border border-foreground/5 hover:border-foreground/15 bg-foreground/[0.02] transition-all duration-500 overflow-hidden"
+                className="group relative p-6 rounded-2xl border border-foreground/5 hover:border-foreground/15 bg-foreground/2 transition-all duration-500 overflow-hidden"
               >
                 {/* Hover glow */}
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={isInView ? { scaleX: 1 } : {}}
                   transition={{ duration: 0.6, delay: 0.9 + i * 0.1 }}
-                  className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 origin-left"
+                  className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 origin-left"
                   style={{ background: `linear-gradient(90deg, transparent, ${profile.color}, transparent)` }}
                 />
 
@@ -342,13 +287,7 @@ export default function CompetitiveProgramming() {
         </motion.div>
 
         {/* ========== NEXT GOALS BANNER ========== */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          whileHover={{ scale: 1.01 }}
-          className="relative p-8 sm:p-10 rounded-3xl border border-emerald-500/10 bg-emerald-500/[0.02] overflow-hidden"
-        >
+        <motion.div initial={{ opacity: 0, y: 30, scale: 0.95 }} animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ duration: 0.8, delay: 0.9 }} whileHover={{ scale: 1.01 }} className="relative p-8 sm:p-10 rounded-3xl border border-emerald-500/10 bg-emerald-500/2 overflow-hidden">
           <motion.div
             animate={{ x: [0, 20, 0], y: [0, -10, 0] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -359,28 +298,28 @@ export default function CompetitiveProgramming() {
             <motion.div
               animate={{ rotate: [0, 5, -5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="w-20 h-20 rounded-2xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0"
+              className="w-20 h-20 rounded-2xl bg-emerald-500/10 flex items-center justify-center shrink-0"
             >
               <Trophy size={36} className="text-emerald-400" />
             </motion.div>
             <div className="text-center lg:text-left flex-1">
-              <h3 className="text-foreground text-[1.25rem] mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
+              <h3 className="text-foreground text-[1.15rem] mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
                 Next Goals
               </h3>
               <p className="text-foreground/40 text-[0.9rem] mb-4" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.7 }}>
-                Pushing past the <span className="text-emerald-400">500+ problems</span> milestone while targeting{" "}
-                <span className="text-emerald-400">Specialist on Codeforces</span> and{" "}
-                <span className="text-purple-400">3★ on CodeChef</span>. Simultaneously mastering advanced DP, Graph algorithms, and Segment Trees.
+                Pushing past the <span className="text-emerald-300">500+ problems</span> milestone while targeting{" "}
+                <span className="text-emerald-300">Codeforces Specialist</span> and{" "}
+                <span className="text-emerald-300">CodeChef 3★</span>.
               </p>
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                {["500+ Problems", "CF Specialist", "CC 3★", "LeetCode 1800+", "Advanced DP", "Graph Mastery"].map((tag, ti) => (
+                {["500+ Problems", "CF Specialist", "CC 3★"].map((tag, ti) => (
                   <motion.span
                     key={tag}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.3, delay: 1 + ti * 0.08 }}
                     whileHover={{ scale: 1.08, y: -2 }}
-                    className="px-3 py-1.5 rounded-full border border-emerald-500/20 text-emerald-400/80 text-[0.7rem] cursor-default"
+                    className="px-3 py-1.5 rounded-full border border-emerald-500/20 text-emerald-300/85 text-[0.7rem] cursor-default"
                     style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
                   >
                     {tag}

@@ -11,10 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main
-      className="min-h-screen bg-black text-white"
-      style={{ fontFamily: "'Inter', sans-serif" }}
-    >
+    <main className="min-h-screen bg-background text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
       <Navigation />
       <Hero />
       <About />

@@ -23,7 +23,7 @@ const skillGroups: SkillGroup[] = [
     id: "languages",
     title: "Languages",
     icon: <Braces size={20} />,
-    color: "#10b981",
+    color: "#2dd4bf",
     description: "Core programming languages I write production code in daily",
     skills: [
       { name: "Python", note: "Primary — FastAPI, scripting, ML pipelines" },
@@ -37,7 +37,7 @@ const skillGroups: SkillGroup[] = [
     id: "web-development",
     title: "Web Development",
     icon: <Monitor size={20} />,
-    color: "#a855f7",
+    color: "#2dd4bf",
     description: "Core web development stack",
     skills: [
       { name: "React", note: "Component-driven UI development" },
@@ -50,7 +50,7 @@ const skillGroups: SkillGroup[] = [
     id: "backend",
     title: "Deployment & Infrastructure",
     icon: <Server size={20} />,
-    color: "#f59e0b",
+    color: "#2dd4bf",
     description: "Hosting and deployment tooling",
     skills: [
       { name: "Docker", note: "Containerized development and deployment" },
@@ -64,7 +64,7 @@ const skillGroups: SkillGroup[] = [
     id: "ai",
     title: "AI & Agents",
     icon: <BrainCircuit size={20} />,
-    color: "#ec4899",
+    color: "#2dd4bf",
     description: "Building intelligent systems with modern AI frameworks",
     skills: [
       { name: "LangChain", note: "Agent chains, tool integration, memory" },
@@ -78,7 +78,7 @@ const skillGroups: SkillGroup[] = [
     id: "tools",
     title: "Tools & Workflow",
     icon: <Wrench size={20} />,
-    color: "#e0e0e0",
+    color: "#a3a3a3",
     description: "Dev tools, version control, and automation",
     skills: [
       { name: "Git & GitHub", note: "Branching, PRs, CI workflows" },
@@ -105,20 +105,20 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
       animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, type: "spring", stiffness: 120 }}
       whileHover={{ y: -4 }}
-      className="group relative p-5 rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/[0.02] transition-all duration-500 overflow-hidden"
+      className="group relative p-5 rounded-2xl border border-foreground/5 hover:border-foreground/10 bg-foreground/2 transition-all duration-500 overflow-hidden"
     >
       {/* Top glow */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
         transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-        className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 origin-left"
+        className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 origin-left"
         style={{ background: `linear-gradient(90deg, transparent, ${group.color}, transparent)` }}
       />
 
       {/* Corner glow */}
       <div
-        className="absolute -top-8 -right-8 w-20 h-20 rounded-full blur-[40px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
+        className="absolute -top-8 -right-8 w-20 h-20 rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"
         style={{ backgroundColor: group.color }}
       />
 
@@ -158,12 +158,12 @@ function SkillGroupCard({ group, index, isInView }: { group: SkillGroup; index: 
             transition={{ duration: 0.4, delay: index * 0.1 + si * 0.06 + 0.3 }}
             onMouseEnter={() => setHoveredSkill(si)}
             onMouseLeave={() => setHoveredSkill(null)}
-            className="relative flex items-start gap-2.5 py-2 px-3 -mx-1 rounded-lg hover:bg-foreground/[0.03] transition-all duration-300 cursor-default"
+            className="relative flex items-start gap-2.5 py-2 px-3 -mx-1 rounded-lg hover:bg-foreground/3 transition-all duration-300 cursor-default"
           >
             <motion.div
               animate={hoveredSkill === si ? { scale: 1.3 } : { scale: 1 }}
               transition={{ duration: 0.2 }}
-              className="w-1.5 h-1.5 rounded-full mt-[7px] flex-shrink-0"
+              className="w-1.5 h-1.5 rounded-full mt-1.75 shrink-0"
               style={{ backgroundColor: hoveredSkill === si ? group.color : "rgba(128,128,128,0.25)" }}
             />
             <div className="flex-1 min-w-0">
@@ -206,45 +206,23 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="relative py-24 bg-background overflow-hidden">
+    <section id="skills" className="relative py-20 lg:py-24 bg-background overflow-hidden">
       <motion.div
         animate={{ x: [0, 30, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-500/[0.03] rounded-full blur-[120px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-125 h-125 bg-emerald-500/3 rounded-full blur-[120px] pointer-events-none"
       />
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-emerald-400 text-[0.8rem] uppercase tracking-[0.3em] block mb-4"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
-          >
-            Technical Arsenal
-          </motion.span>
-          <h2
-            className="text-[2.5rem] sm:text-[3rem] text-foreground mb-3"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
-          >
-            Skills &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
-              Technologies
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7 }} className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <span className="inline-flex rounded-full border border-foreground/8 bg-foreground/3 px-3 py-1 text-[0.68rem] uppercase tracking-[0.25em] text-foreground/50" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+              Skills
             </span>
-          </h2>
-          <p
-            className="text-foreground/25 text-[0.9rem] max-w-xl mx-auto"
-            style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}
-          >
-            Hover any skill to see context — what I use it for and how deep I go.
-          </p>
+            <p className="mt-3 max-w-xl text-[0.95rem] text-foreground/40" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}>
+              A compact view of the tools I reach for most often.
+            </p>
+          </div>
         </motion.div>
 
         {/* Skills Grid — top row 3, bottom row 2 centered */}
@@ -271,7 +249,7 @@ export default function Skills() {
               <motion.div
                 key={`${tech}-${i}`}
                 whileHover={{ scale: 1.08, borderColor: "rgba(16,185,129,0.4)" }}
-                className="flex-shrink-0 px-4 py-2 rounded-full border border-foreground/8 text-foreground/40 text-[0.75rem] hover:text-emerald-400 transition-all duration-300 cursor-default"
+                className="shrink-0 px-4 py-2 rounded-full border border-foreground/8 text-foreground/40 text-[0.75rem] hover:text-emerald-400 transition-all duration-300 cursor-default"
                 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
               >
                 {tech}

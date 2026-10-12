@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import Image from "next/image";
 import { GraduationCap, Compass, Crosshair } from "lucide-react";
 
 const highlights = [
@@ -27,7 +28,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative py-32 bg-background overflow-hidden">
+    <section id="about" className="relative py-24 lg:py-28 bg-background overflow-hidden">
       {/* Subtle grid bg */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -39,79 +40,64 @@ export default function About() {
       />
 
       <div ref={ref} className="relative max-w-6xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <span
-            className="text-emerald-400 text-[0.8rem] uppercase tracking-[0.3em] block mb-4"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500 }}
-          >
-            About Me
-          </span>
-          <h2
-            className="text-[2.5rem] sm:text-[3rem] text-foreground"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.2 }}
-          >
-            Crafting the Future with{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-300">
-              Code & AI
-            </span>
-          </h2>
-        </motion.div>
-
-        {/* About text */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl mx-auto mb-20"
-        >
-          <p
-            className="text-foreground/50 text-[1.05rem] text-center"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.8 }}
-          >
-            I&apos;m an engineering student passionate about building intelligent systems
-            that bridge the gap between AI and real-world applications. With a strong
-            foundation in Data Structures & Algorithms and competitive programming,
-            I specialize in creating full-stack web applications with Next.js , React.js ,FastAPI powered by cutting-edge
-            AI technologies like LangChain, and LangGraph. My projects
-            range from AI-powered competitive programming coaches to metacognitive
-            learning systems.
-          </p>
-        </motion.div>
-
-        {/* Highlight cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-          {highlights.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.15 }}
-              whileHover={{ y: -8 }}
-              className="group p-6 rounded-2xl border border-foreground/5 hover:border-emerald-500/30 bg-foreground/[0.02] backdrop-blur-sm transition-all duration-500 text-center w-full max-w-sm"
-            >
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 mx-auto group-hover:bg-emerald-500/20 transition-colors duration-300">
-                {item.icon}
-              </div>
-              <h3
-                className="text-foreground text-[1rem] mb-2"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}
-              >
-                {item.title}
-              </h3>
-              <p
-                className="text-foreground/40 text-[0.875rem]"
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.6 }}
-              >
-                {item.desc}
-              </p>
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div>
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} className="mb-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1 text-[0.7rem] uppercase tracking-[0.24em] text-emerald-300" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                About
+              </span>
             </motion.div>
-          ))}
+
+            <motion.h2 initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.1 }} className="text-[2.4rem] sm:text-[3rem] text-foreground max-w-xl" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, lineHeight: 1.1 }}>
+              Engineering student building AI systems and web products.
+            </motion.h2>
+
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="mt-6 max-w-2xl text-[1.03rem] text-foreground/55" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.85 }}>
+              I build full-stack systems where AI, product thinking, and competitive programming overlap. My focus is practical: shipping tools that feel useful, fast, and technically grounded rather than overly polished templates.
+            </motion.p>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-3">
+              {highlights.map((item, i) => (
+                <motion.div key={item.title} initial={{ opacity: 0, y: 18 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.25 + i * 0.1 }} className="rounded-2xl border border-foreground/6 bg-foreground/[0.02] px-4 py-4">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/15 bg-emerald-500/10 text-emerald-300">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-[0.95rem] text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-[0.84rem] text-foreground/40" style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.55 }}>
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <motion.div initial={{ opacity: 0, y: 30, scale: 0.98 }} animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ duration: 0.8, delay: 0.2 }} className="relative overflow-hidden rounded-[1.75rem] border border-foreground/8 bg-foreground/[0.03] p-4 shadow-[0_20px_80px_rgba(0,0,0,0.2)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(45,212,191,0.12),_transparent_55%)]" />
+            <div className="relative grid gap-4">
+              <div className="overflow-hidden rounded-[1.25rem] border border-white/5 bg-black/40">
+                <Image src="/healthedge_logo.jpg" alt="HealthEdge logo" width={900} height={700} className="h-72 w-full object-cover object-center opacity-90" priority />
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  { value: "B.Tech", label: "CSE-IT" },
+                  { value: "AI + Web", label: "Primary stack" },
+                  { value: "CP", label: "Daily practice" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-foreground/6 bg-black/30 px-4 py-3">
+                    <div className="text-[1rem] text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700 }}>
+                      {item.value}
+                    </div>
+                    <div className="text-[0.72rem] uppercase tracking-[0.2em] text-foreground/35" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600 }}>
+                      {item.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
